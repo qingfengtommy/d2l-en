@@ -28,13 +28,13 @@ import tensorflow as tf
 from IPython import display
 ```
 
-## The `Classification` Class
+## The `Classifier` Class
 
-We define the `Classification` class below. In the `validation_step` we report both the loss value and the classification accuracy on a validation batch. We draw an update for every `num_val_batches` batches. This has the benefit of generating the averaged loss and accuracy on the whole validation data. These average numbers are not exact correct if the last batch contains fewer examples, but we ignore this minor difference to keep the code simple.
+We define the `Classifier` class below. In the `validation_step` we report both the loss value and the classification accuracy on a validation batch. We draw an update for every `num_val_batches` batches. This has the benefit of generating the averaged loss and accuracy on the whole validation data. These average numbers are not exact correct if the last batch contains fewer examples, but we ignore this minor difference to keep the code simple.
 
 ```{.python .input}
 %%tab all
-class Classification(d2l.Module):  #@save
+class Classifier(d2l.Module):  #@save
     def validation_step(self, batch):
         Y_hat = self(*batch[:-1])
         self.plot('loss', self.loss(Y_hat, batch[-1]), train=False)
@@ -126,13 +126,11 @@ def parameters(self):
 
 ## Summary
 
-Classification is a sufficiently frequently used problem type that it warrants its own convenience functions. Note that there is a difference between (classification) accuracy that we want to minimize and the logistic loss function that we are actually minimizing. Fortunately, our specific choice of loss function ensures that minimizing it will also lead to maximum accuracy. This is the case since the maximum likelihood estimator is consistent. It follows as a special case of the Cramer-Rao bound :cite:`cramer1946mathematical,radhakrishna1945information`. For more work on consistency see also :cite:`zhang2004statistical`.
+Classification is a sufficiently common problem that it warrants its own convenience functions. Of central importance in classification is the *accuracy* of the classifier. Note that while we often care primarily about accuracy, we train classifiers to optimize a variety of other objectives for statistical and computational reasons. However, regardless of which loss function was minimized during training, it's useful to have a convenience method for assessing the accuracy of our classifier empirically. 
 
-More generally, though, the decision of which category to pick is far from trivial. For instance, when deciding where to assign an e-mail to, mistaking a "Primary" e-mail for a "Social" e-mail might be undesirable but far less disastrous than moving it to the spam folder (and later automatically deleting it). As such, we will tend to err on the side of caution with regard to assigning any e-mail to the "Spam" folder, rather than picking the most likely category.
 
 ## Exercises
 
 1. Denote by $L_v$ the validation loss, and let $L_v^q$ be its quick and dirty estimate computed by the loss function averaging in this section. Lastly, denote by $l_v^b$ the loss on the last minibatch. Express $L_v$ in terms of $L_v^q$, $l_v^b$, and the sample and minibatch sizes.
 1. Show that the quick and dirty estimate $L_v^q$ is unbiased. That is, show that $E[L_v] = E[L_v^q]$. Why would you still want to use $L_v$ instead?
 1. Given a multiclass classification loss, denoting by $l(y,y')$ the penalty of estimating $y'$ when we see $y$ and given a probabilty $p(y|x)$, formulate the rule for an optimal selection of $y'$. Hint: express the expected loss, using $l$ and $p(y|x)$.
-

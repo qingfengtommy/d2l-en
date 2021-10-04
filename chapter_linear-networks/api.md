@@ -263,4 +263,3 @@ class Trainer(d2l.HyperParameters):  #@save
 ## Summary
 
 The classes provided by the D2L API function as a lightweight toolkit that make structured modeling for deep learning easy. In particular, it makes it easy to reuse many components between projects without changing much at all. For instance, we can replace just the optimizer, just the model, just the dataset, etc.; This degree of modularity pays dividends throughout the book in terms of conciseness and simplicity (this is why we added it) and it can do the same for your own projects. We strongly recommend that you look at the implementation in detail once you have gained some more familiarity with deep learning modeling.
-
