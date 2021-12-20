@@ -6,6 +6,8 @@ tab.interact_select(['mxnet', 'pytorch', 'tensorflow'])
 # Concise Implementation of Linear Regression
 :label:`sec_linear_concise`
 
+Deep Learning has undergone a Cambrian Explosion of sorts over the past decade,
+with a rapid proliferation of new techniques, applications, and algorithms. 
 This is due to a fortuitous combination of multiple factors,
 one of which is the powerful free tools
 offered by a number of open source deep learning frameworks. 
@@ -18,7 +20,6 @@ which provided a Lisp-like programming experience,
 modern frameworks offer automatic differentiation
 and the convenience of Python. 
 Frameworks allow us to automate and modularize
->>>>>>> first wave of massive reorg
 the repetitive work of implementing gradient-based learning algorithms.
 
 In :numref:`sec_linear_scratch`, we relied only on
@@ -306,7 +307,7 @@ implementation of a deep network (in this book)
 to tap into the conveniences afforded 
 by modern deep learning frameworks,
 such as Gluon, JAX, Keras, PyTorch, and Tensorflow
-:cite:`Abadi.Barham.Chen.ea    .2016,Paszke.Gross.Massa.ea.2019,Frostig.Johnson.Leary.2018,Chen.Li.Li.ea.2015`.
+:cite:`Abadi.Barham.Chen.ea.2016,Paszke.Gross.Massa.ea.2019,Frostig.Johnson.Leary.2018,Chen.Li.Li.ea.2015`.
 We used framework defaults for loading data, defining a layer, 
 a loss function, an optimizer and a training loop. 
 Whenever the framework provides all necessary features,

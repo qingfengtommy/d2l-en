@@ -42,7 +42,6 @@ For a refresher, recall the operation of the sum operator
 along specific dimensions in a tensor,
 as discussed in :numref:`subsec_lin-alg-reduction` 
 and :numref:`subsec_lin-alg-non-reduction`.
-
 [**Given a matrix `X` we can sum over all elements (by default) or only
 over elements in the same axis.**]
 The `axis` variable lets us compute row and column sums:
@@ -111,7 +110,6 @@ In later chapters, we will introduce
 convolutional neural networks,
 which exploit the spatial structure
 in a more satisfying way.
-
 
 In softmax regression, 
 the number of outputs from our network
